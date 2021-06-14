@@ -64,7 +64,7 @@ header{
   padding: 5px 15px;
 }
 
-.Search-Area{
+.Search--Area{
   background-color: #FFF;
   height: 40px;
   border-radius: 20px;
@@ -73,7 +73,7 @@ header{
   padding: 0 10px;
 }
 
-.Search-Area input {
+.Search--Area input {
   flex: 1;
   border: 0;
   outline: 0;
@@ -81,8 +81,23 @@ header{
   margin-left: 10px;
 }
 
+.App-ChatList{
+  flex: 1;
+  background-color: #FFF;
+  overflow-y: auto;
+}
+
+.App-ChatList::-webkit-scrollbar{
+  width: 6px;
+  height: 6px;
+}
+
+.App-ChatList::-webkit-scrollbar-thumb{
+  background-color: #00000038;
+}
+
 /* CHAT */
 
 .App-Chat{
-  display: flex;
+  flex: 1;
 }
