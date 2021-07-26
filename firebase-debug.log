@@ -1,0 +1,65 @@
+[debug] [2021-07-26T01:26:44.096Z] ----------------------------------------------------------------------
+[debug] [2021-07-26T01:26:44.099Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\supor\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2021-07-26T01:26:44.100Z] CLI Version:   9.16.0
+[debug] [2021-07-26T01:26:44.100Z] Platform:      win32
+[debug] [2021-07-26T01:26:44.100Z] Node Version:  v14.17.1
+[debug] [2021-07-26T01:26:44.102Z] Time:          Sun Jul 25 2021 22:26:44 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2021-07-26T01:26:44.102Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-07-26T01:26:44.204Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-07-26T01:26:44.204Z] > authorizing via signed-in user (suportetms@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\SISTEMAS\chatweb
+
+Before we get started, keep in mind:
+
+  * You are currently outside your home directory
+  * You are initializing within an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2021-07-26T01:27:12.081Z] > refreshing access token with scopes: []
+[debug] [2021-07-26T01:27:12.082Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-07-26T01:27:12.524Z] <<< HTTP RESPONSE 200 {"date":"Mon, 26 Jul 2021 01:27:12 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","expires":"Mon, 01 Jan 1990 00:00:00 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-07-26T01:27:12.561Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/chatweb-8ffdd [none]
+[debug] [2021-07-26T01:27:13.824Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/chatweb-8ffdd 200
+[debug] [2021-07-26T01:27:13.824Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/chatweb-8ffdd {"projectId":"chatweb-8ffdd","projectNumber":"1062507250039","displayName":"chatweb","name":"projects/chatweb-8ffdd","resources":{"hostingSite":"chatweb-8ffdd","storageBucket":"chatweb-8ffdd.appspot.com","locationId":"us-central"},"state":"ACTIVE"}
+[info] i  Using project chatweb-8ffdd (chatweb) 
+[info] 
+=== Firestore Setup
+[debug] [2021-07-26T01:27:13.849Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-07-26T01:27:13.849Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-07-26T01:27:14.318Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","date":"Mon, 26 Jul 2021 01:27:14 GMT","pragma":"no-cache","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-07-26T01:27:14.345Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/chatweb-8ffdd/services/firestore.googleapis.com  
+ 
+[debug] [2021-07-26T01:27:15.554Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Mon, 26 Jul 2021 01:27:15 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-07-26T01:27:15.556Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/chatweb-8ffdd  
+ 
+[debug] [2021-07-26T01:27:16.391Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Mon, 26 Jul 2021 01:27:16 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-07-26T01:27:16.392Z] database_type: CLOUD_FIRESTORE
+[debug] [2021-07-26T01:27:16.393Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-07-26T01:27:16.393Z] > authorizing via signed-in user (suportetms@gmail.com)
+[debug] [2021-07-26T01:27:16.393Z] [iam] checking project chatweb-8ffdd for permissions ["firebase.projects.get"]
+[debug] [2021-07-26T01:27:16.394Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/chatweb-8ffdd:testIamPermissions  
+ {"permissions":["firebase.projects.get"]}
+[debug] [2021-07-26T01:27:17.380Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Mon, 26 Jul 2021 01:27:17 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=769","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] Firestore Security Rules allow you to define how and when to allow
+[info] requests. You can keep these rules in your project directory
+[info] and publish them with firebase deploy.
+[info] 
