@@ -1,38 +1,63 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import Api, { auth } from './Api';
 
 import ChatlistFunc from './components/ChatListItem';
 import ChatIntro from './components/ChatIntro';
 import ChatWindow from './components/ChatWindow';
 import NewChat from './components/NewChat';
+import Login from './components/Login'
 
-import DonutLargeIcon from '@material-ui/icons/DonutLarge';
 import ChatIcon from '@material-ui/icons/Chat';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import SearchIcon from '@material-ui/icons/Search';
 
 function App() {
 
-  const [chatlist, setChatlist] = useState
-    ([
-      { chatId: 1, tittle: 'Gustavo', image: 'https://www.w3schools.com/howto/img_avatar2.png' },
-      { chatId: 2, tittle: 'Nata', image: 'https://www.w3schools.com/howto/img_avatar2.png' },
-      { chatId: 3, tittle: 'Gremio', image: 'https://www.w3schools.com/howto/img_avatar2.png' },
-      { chatId: 4, tittle: 'Giovanni', image: 'https://www.w3schools.com/howto/img_avatar2.png' }
-    ]);
-
+  const [chatlist, setChatlist] = useState([]);
   const [activeChat, setActiveChat] = useState({});
-
-  const [user, setUser] = useState({
-    id: 1234,
-    image: 'https://www.w3schools.com/howto/img_avatar2.png',
-    name: 'Gustavo Ré'
-  })
-
+  const [user, setUser] = useState(null)
   const [ShowNewChatList, setShowNewChatList] = useState(false);
 
-  function handleOpenChat(){
+  useEffect(() => {
+    if (user !== null) {
+      let unsub = Api.onChatList(user.id, setChatlist)
+      return unsub
+    }
+  }, [user])
+
+  function handleOpenChat() {
     setShowNewChatList(true);
+  }
+
+  async function handleLoginData(u) {
+    let newUser = {
+      id: u.uid,
+      name: u.displayName,
+      avatar: u.photoURL
+    }
+    await Api.addUser(newUser)
+    setUser(newUser)
+  }
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(user => {
+      if (user) {
+        const { displayName, photoURL, uid } = user;
+
+        setUser({
+          id: uid,
+          name: displayName,
+          avatar: photoURL
+        })
+      }
+    })
+
+    return () => {
+      unsubscribe();
+    }
+  }, [])
+
+  if (user === null) {
+    return (<Login onReceive={handleLoginData} />)
   }
 
   return (
@@ -46,26 +71,13 @@ function App() {
           setShow={setShowNewChatList}
         />
         <header>
-          <img className="Header--img" src={user.image} alt="" />
+          <img className="Header--img" src={user.avatar} alt="" />
           <div className="Header--Btns">
-            <div className="Btns">
-              <DonutLargeIcon style={{ color: '#919191' }} />
-            </div>
             <div onClick={handleOpenChat} className="Btns">
               <ChatIcon style={{ color: '#919191' }} />
             </div>
-            <div className="Btns">
-              <MoreVertIcon style={{ color: '#919191' }} />
-            </div>
           </div>
         </header>
-
-        <div className="App-Search">
-          <div className="Search--Area">
-            <SearchIcon fontSize="small" style={{ color: '#919191' }} />
-            <input type="search" placeholder="Iniciar uma nova conversa" />
-          </div>
-        </div>
 
         <div className="App-ChatList">
           {chatlist.map((item, key) => (
@@ -76,20 +88,19 @@ function App() {
               onClick={() => setActiveChat(chatlist[key])} />
           ))}
         </div>
-
       </div>
 
       <div className="App-Chat">
         {activeChat.chatId !== undefined &&
           <ChatWindow
             user={user}
+            data={activeChat}
           />
         }
         {activeChat.chatId === undefined &&
           <ChatIntro />
         }
       </div>
-
     </div>
   );
 }

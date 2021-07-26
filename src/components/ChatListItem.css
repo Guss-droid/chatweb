@@ -6,11 +6,11 @@
 }
 
 .ChatList:hover{
-    background-color: #F5F5F5;
+    background-color: #ffddff88;
 }
 
 .ChatList.active{
-    background-color: #EBEBEB;
+    background-color: #e6c6dd;
 }
 
 .ChatList-img{

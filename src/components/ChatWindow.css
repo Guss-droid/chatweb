@@ -6,10 +6,11 @@
 
 .ChatWindow-Header{
   height: 60px;
-  border-bottom: 1px solid #CCC;
+  border-bottom: 1px solid rgb(255, 217, 247);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: rgba(255, 203, 244, 0.61);
 }
 
 .ChatWindow-Header--Info{
@@ -71,6 +72,7 @@
   height: 62px;
   display: flex;
   align-items: center;
+  background-color: rgba(255, 203, 244, 0.61);
 }
 
 .ChatWindow-Footer--Pre{

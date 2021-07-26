@@ -2,17 +2,15 @@ import React, { useEffect, useRef, useState } from 'react';
 import EmojiPicker from 'emoji-picker-react'
 import './ChatWindow.css'
 
-import SearchIcon from '@material-ui/icons/Search';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import AttachFileIcon from '@material-ui/icons/AttachFile';
 import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
 import CloseIcon from '@material-ui/icons/Close';
 import SendIcon from '@material-ui/icons/Send';
 import MicIcon from '@material-ui/icons/Mic';
 
 import MessageItem from './MessageItem';
+import Api from '../Api';
 
-export default function ChatWindow({user}) {
+export default function ChatWindow({ user, data }) {
 
     const body = useRef();
 
@@ -23,36 +21,22 @@ export default function ChatWindow({user}) {
     }
 
     const [emojiOpen, setEmojiOpen] = useState(false);
-
     const [text, setText] = useState();
-
     const [listenig, setListening] = useState(false);
-
-    const [list, setList] = useState([
-        {author: 1234, body: 'Bla bla bla' },
-        {author: 1245, body: 'Bla bla bla' },
-        {author: 1245, body: 'Bla bla bla' },
-        {author: 1234, body: 'Bla bla bla' },
-        {author: 1245, body: 'Bla bla bla' },
-        {author: 1245, body: 'Bla bla bla' },
-        {author: 1234, body: 'Bla bla bla' },
-        {author: 1245, body: 'Bla bla bla' },
-        {author: 1245, body: 'Bla bla bla' },
-        {author: 1234, body: 'Bla bla bla' },
-        {author: 1245, body: 'Bla bla bla' },
-        {author: 1245, body: 'Bla bla bla' },
-        {author: 1234, body: 'Bla bla bla' },
-        {author: 1245, body: 'Bla bla bla' },
-        {author: 1245, body: 'Bla bla bla' },
-        {author: 1234, body: 'Bla bla bla' },
-        {author: 1245, body: 'Bla bla bla' },
-        {author: 1245, body: 'Bla bla bla' },
-    ]);
+    const [list, setList] = useState([]);
+    const [users, setUsers] = useState([])
 
     useEffect(() => {
-       if(body.current.scrollHeight > body.current.offsetHeight){
-           body.current.scrollTop = body.current.scrollHeight - body.current.offsetHeight
-       }
+        setList([])
+        let unsub = Api.onChatContent(data.chatId, setList, setUsers)
+
+        return unsub
+    }, [data.chatId])
+
+    useEffect(() => {
+        if (body.current.scrollHeight > body.current.offsetHeight) {
+            body.current.scrollTop = body.current.scrollHeight - body.current.offsetHeight
+        }
     }, [list]);
 
     function handleEmojiClick(e, emojiObject) {
@@ -65,10 +49,6 @@ export default function ChatWindow({user}) {
 
     function handleEmojiClose() {
         setEmojiOpen(false)
-    }
-
-    function handleSendClick() {
-
     }
 
     function handleMicClick() {
@@ -90,6 +70,20 @@ export default function ChatWindow({user}) {
         }
     }
 
+    function handleSendClick() {
+        if (text !== '') {
+            Api.sendMessage(data, user.id, 'text', text, users)
+            setText('')
+            setEmojiOpen(false)
+        }
+    }
+
+    function handleInputKeyUp(e) {
+        if (e.keyCode === 13) {
+            handleSendClick()
+        }
+    }
+
     return (
         <div className="ChatWindow">
 
@@ -98,24 +92,12 @@ export default function ChatWindow({user}) {
                 <div className="ChatWindow-Header--Info">
 
                     <img className="ChatWindow-Header--Info-Img"
-                        src="https://www.w3schools.com/howto/img_avatar2.png"
+                        src={data.avatar}
                         alt="" />
                     <div className="ChatWindow-Header--Info-Nome">
-                        Gustavo
+                        {data.tittle}
                     </div>
 
-                </div>
-
-                <div className="ChatWindow-Header--Btns">
-                    <div className="ChatWindow-Header--Btns-Btn">
-                        <SearchIcon style={{ color: '#919191' }} />
-                    </div>
-                    <div className="ChatWindow-Header--Btns-Btn">
-                        <AttachFileIcon style={{ color: '#919191' }} />
-                    </div>
-                    <div className="ChatWindow-Header--Btns-Btn">
-                        <MoreVertIcon style={{ color: '#919191' }} />
-                    </div>
                 </div>
 
             </div>
@@ -159,6 +141,7 @@ export default function ChatWindow({user}) {
                         placeholder="Digite uma mensagem"
                         value={text}
                         onChange={e => setText(e.target.value)}
+                        onKeyUp={handleInputKeyUp}
                     />
                 </div>
 

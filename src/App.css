@@ -33,6 +33,7 @@ header{
   justify-content: space-between;
   align-items: center;
   padding: 0 15px;
+  background-color: #f6c9ffa6;
 }
 
 .Header--img{
@@ -83,7 +84,7 @@ header{
 
 .App-ChatList{
   flex: 1;
-  background-color: #FFF;
+  background-color: #fae4ffad;
   overflow-y: auto;
 }
 

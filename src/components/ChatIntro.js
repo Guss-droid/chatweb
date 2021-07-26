@@ -5,10 +5,10 @@ export default function ChatIntro(){
     return(
         <div className="App-ChatIntro">
             <img className="App-ChatIntro-img"
-             src="https://web.whatsapp.com/img/intro-connection-light_c98cc75f2aa905314d74375a975d2cf2.jpg" alt="" 
+             src="https://eshoje.com.br/wp-content/uploads/2018/05/celular.jpg" alt="" 
              />
-            <h1>Mantenha seu celular conectado</h1>
-            <h2>O WhatsApp conecta ao seu celular para sincronizar suas mensagens. <br/> Para reduzir o uso de dados, conecte seu celular a uma rede Wi-Fi.</h2>
+             <h1>Selecione uma conversa</h1>
+             <h2>Esta tela ira ficar até você escolher uma conversa</h2>
         </div>
     )
 }

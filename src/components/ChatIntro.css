@@ -1,16 +1,17 @@
 .App-ChatIntro{
-    background-color: #F8F9FA;
+    background-color: #fcf4ff;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100%;
-    border-bottom: 6px solid #4ADF83;
+    border-bottom: 6px solid #e2c2eb;
 }
 
 .App-ChatIntro-img{
     width: 250px;
     height: auto;
+    border-radius: 90px;
 }
 
 .App-ChatIntro h1{

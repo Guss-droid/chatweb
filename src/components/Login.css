@@ -1,0 +1,30 @@
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: rgb(250, 231, 255);
+}
+
+.create-google{
+  margin-top: 16px;
+  font-weight: 500;
+  height: 50px;
+  border-radius: 8px;
+  background: #EA4335;
+  color: #FFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  cursor: pointer;
+  transition: filter 0.2s;
+}
+
+.create-google:hover{
+  filter: brightness(0.9);
+}
+
+img{
+  margin-right: 8px;
+}
